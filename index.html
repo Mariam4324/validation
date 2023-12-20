@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VALIDATION</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <script defer src="./js/script.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1 class="title">VALIDATION</h1>
+
+    <form action="" class="form">
+
+
+      <div>
+        <input id="text" data-max-length="16" data-min-length="2" class="text input" type="text" placeholder="Enter text" />
+        <label class="text_error error" for="text"></label>
+      </div>
+
+      <div>
+        <input  data-max-length="12" data-min-length="10" class="tel input" type="tel" placeholder="Enter tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" />
+        <label class="tel_error error" for="tel"></label>
+      </div>
+
+      <div>
+        <input id="email" class="email input" type="email" placeholder="Enter email" />
+        <label class="email_error error" for="email"></label>
+      </div>
+
+
+      <div>
+        <input id="password" class="password input" minlength="8" maxlength="20" type="password" placeholder="Enter password" />
+        <label class="password_error error" for="password"></label>
+      </div>
+
+
+
+
+
+      <input class="btn" type="submit" value="Sigh up">
+    </form>
+  </div>
+</body>
+
+</html>
