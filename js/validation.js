@@ -87,6 +87,7 @@ function passwordValidation(elem, errorElem) {
       elem.classList.add("unsubmit");
       errorElem.textContent = `пароль должен быть меньше ${ev.target.dataset.maxLength} символов`;
     } else {
+      InputValidation = true;
       elem.classList.remove("unsubmit");
       elem.classList.add("submit");
     }
@@ -97,10 +98,21 @@ function emailValidation(elem, errorElem) {
   errorElem.textContent = "";
 
   elem.addEventListener("input", (ev) => {
+    errorElem.textContent = "";
     if (ev.target.value.length === 0) {
       elem.classList.add("unsubmit");
       errorElem.textContent = "обязательно";
-    } 
+    } else if (ev.target.value.length < ev.target.dataset.minLength) {
+      elem.classList.add("unsubmit");
+      errorElem.textContent = `почта должна быть более ${ev.target.dataset.minLength} символов`;
+    } else if (ev.target.value.length > ev.target.dataset.maxLength) {
+      elem.classList.add("unsubmit");
+      errorElem.textContent = `пароль должен быть меньше ${ev.target.dataset.maxLength} символов`;
+    } else {
+      elem.classList.remove("unsubmit");
+      elem.classList.add("submit");
+      InputValidation = true;
+    }
   });
 }
 
