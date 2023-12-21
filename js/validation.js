@@ -16,6 +16,7 @@ form.addEventListener("submit", (ev) => {
 textValidation(textInput, errorText);
 telValidation(telInput, errorTel);
 passwordValidation(passwordInput, errorPassword);
+emailValidation(emailInput, errorEmail);
 
 let InputValidation = false;
 
@@ -79,16 +80,27 @@ function passwordValidation(elem, errorElem) {
     if (ev.target.value.length === 0) {
       elem.classList.add("unsubmit");
       errorElem.textContent = "обязательно";
-    } else if (ev.target.value.length < 8) {
+    } else if (ev.target.value.length < ev.target.dataset.minLength) {
       elem.classList.add("unsubmit");
       errorElem.textContent = `пароль должен быть более ${ev.target.dataset.minLength} символов`;
-    } else if (ev.target.value.length > 20) {
+    } else if (ev.target.value.length > ev.target.dataset.maxLength) {
       elem.classList.add("unsubmit");
       errorElem.textContent = `пароль должен быть меньше ${ev.target.dataset.maxLength} символов`;
     } else {
       elem.classList.remove("unsubmit");
       elem.classList.add("submit");
     }
+  });
+}
+
+function emailValidation(elem, errorElem) {
+  errorElem.textContent = "";
+
+  elem.addEventListener("input", (ev) => {
+    if (ev.target.value.length === 0) {
+      elem.classList.add("unsubmit");
+      errorElem.textContent = "обязательно";
+    } 
   });
 }
 
