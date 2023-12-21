@@ -23,7 +23,7 @@ function textValidation(elem, errorElem) {
     errorText.textContent = "";
     if (ev.target.value.length === 0) {
       textInput.classList.add("unsubmit");
-      errorElem.textContent = `обязательно`;
+      errorElem.textContent = "обязательно";
     } else if (ev.target.value.length < ev.target.dataset.minLength) {
       textInputValidation = false;
       errorElem.textContent = `имя должно быть более ${ev.target.dataset.minLength} символов `;
@@ -52,14 +52,20 @@ function telValidation(elem, errorElem) {
     );
 
     ev.target.value = filteredContent.join("");
-
-    if (ev.target.value.length < ev.target.dataset.minLength) {
+    if (ev.target.value.length === 0) {
+      telInput.classList.add("unsubmit");
+      errorElem.textContent = "обязательно";
+    } else if (ev.target.value.length < ev.target.dataset.minLength) {
       textInputValidation = false;
-      errorElem.textContent = `номер телефона должен быть более ${ev.target.dataset.minLength} символов `;
+      errorElem.textContent = `номер телефона должен быть не менее ${ev.target.dataset.minLength} символов`;
+      telInput.classList.add("unsubmit");
     } else if (ev.target.value.length > ev.target.dataset.maxLength) {
       textInputValidation = false;
-      errorElem.textContent = `номер телефона должен быть меньше ${ev.target.dataset.maxLength} символов`;
+      errorElem.textContent = `номер телефона должен быть менее ${ev.target.dataset.maxLength} символов`;
+      telInput.classList.add("unsubmit");
     } else {
+      telInput.classList.remove("unsubmit");
+      telInput.classList.add("submit");
       textInputValidation = true;
     }
   });
